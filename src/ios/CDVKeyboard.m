@@ -33,6 +33,8 @@
 
 @implementation CDVKeyboard
 
+@synthesize disableScroll = _disableScroll;
+
 - (id)settingForKey:(NSString*)key
 {
     return [self.commandDelegate.settings objectForKey:[key lowercaseString]];
@@ -58,6 +60,8 @@
     if ([self settingForKey:setting]) {
         self.disableScrollingInShrinkView = [(NSNumber*)[self settingForKey:setting] boolValue];
     }
+
+    self.disableScroll = NO;
 
     NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
     __weak CDVKeyboard* weakSelf = self;
@@ -103,6 +107,37 @@
                                                              }];
 
     self.webView.scrollView.delegate = self;
+}
+
+
+- (BOOL)disableScroll {
+    return _disableScroll;
+}
+
+- (void)setDisableScroll:(BOOL)disableScroll {
+    if (disableScroll == _disableScroll) {
+        return;
+    }
+    if (disableScroll) {
+        self.webView.scrollView.scrollEnabled = NO;
+        self.webView.scrollView.delegate = self;
+    }
+    else {
+        self.webView.scrollView.scrollEnabled = YES;
+        self.webView.scrollView.delegate = nil;
+    }
+
+    _disableScroll = disableScroll;
+}
+
+- (void) disableScroll:(CDVInvokedUrlCommand*)command {
+    if (!command.arguments || ![command.arguments count]){
+      return;
+    }
+    id value = [command.arguments objectAtIndex:0];
+    if (value != [NSNull null]) {
+      self.disableScroll = [value boolValue];
+    }
 }
 
 #pragma mark HideFormAccessoryBar
