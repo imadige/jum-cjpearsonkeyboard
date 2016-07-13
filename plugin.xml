@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="jum-cjpearsonkeyboard" version="1.1.6">
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="jum-cjpearsonkeyboard" version="1.1.7">
     <name>Keyboard</name>
     <description>Cordova Keyboard Plugin</description>
     <license>Apache 2.0</license>
     <keywords>cordova,keyboard</keywords>
 
-    <engines>
-	<engine name="cordova" version=">=3.2.0" />
-    </engines>
+   
 
     <js-module src="www/keyboard.js" name="keyboard">
     	<clobbers target="window.Keyboard" />
