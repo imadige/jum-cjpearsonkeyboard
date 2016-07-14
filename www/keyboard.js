@@ -27,15 +27,15 @@ var Keyboard = function() {
 };
 
 Keyboard.shrinkView = function(shrink) {
-    exec(null, null, "Keyboard", "shrinkView", [shrink]);
+    exec(null, null, "Keyboard2", "shrinkView", [shrink]);
 };
 
 Keyboard.hideFormAccessoryBar = function(hide) {
-    exec(null, null, "Keyboard", "hideFormAccessoryBar", [hide]);
+    exec(null, null, "Keyboard2", "hideFormAccessoryBar", [hide]);
 };
 
 Keyboard.disableScrollingInShrinkView = function(disable) {
-    exec(null, null, "Keyboard", "disableScrollingInShrinkView", [disable]);
+    exec(null, null, "Keyboard2", "disableScrollingInShrinkView", [disable]);
 };
 
 Keyboard.fireOnShow = function() {
@@ -81,11 +81,11 @@ Keyboard.fireOnShowing = function() {
 };
 
 Keyboard.show = function() {
-    exec(null, null, "Keyboard", "show", []);
+    exec(null, null, "Keyboard2", "show", []);
 };
 
 Keyboard.hide = function() {
-    exec(null, null, "Keyboard", "hide", []);
+    exec(null, null, "Keyboard2", "hide", []);
 };
 
 Keyboard.isVisible = false;
