@@ -1,4 +1,3 @@
-
 /*
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements.  See the NOTICE file
@@ -29,8 +28,6 @@
     id _keyboardShowObserver, _keyboardHideObserver, _keyboardWillShowObserver, _keyboardWillHideObserver;
     @protected
     id _shrinkViewKeyboardWillChangeFrameObserver;
-    int timer;
-    CGRect sc;
 }
 
 @property (readwrite, assign) BOOL shrinkView;

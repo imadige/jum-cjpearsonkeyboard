@@ -187,28 +187,10 @@ static IMP WKOriginalImp;
     if (CGRectContainsRect(screen, keyboardIntersection) && !CGRectIsEmpty(keyboardIntersection) && _shrinkView && self.keyboardIsVisible) {
         screen.size.height -= keyboardIntersection.size.height;
         self.webView.scrollView.scrollEnabled = !self.disableScrollingInShrinkView;
-        sc=screen;
-        timer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(cancelWeb) userInfo:nil repeats:NO];
-    }else{
-        self.webView.frame = [self.webView.superview convertRect:screen fromView:self.webView];
-
     }
-    
+
     // A view's frame is in its superview's coordinate system so we need to convert again
-   
-}
-
-- (void)cancelWeb
-{
-    self.webView.frame = [self.webView.superview convertRect:sc fromView:self.webView];
-
-    NSLog(@"didn't finish loading within 20 sec");
-    // do anything error
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-   
+    self.webView.frame = [self.webView.superview convertRect:screen fromView:self.webView];
 }
 
 #pragma mark UIScrollViewDelegate
