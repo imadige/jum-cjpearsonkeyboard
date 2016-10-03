@@ -172,6 +172,7 @@ static IMP WKOriginalImp;
     statusBar = [self.webView convertRect:statusBar fromView:nil];
     screen = [self.webView convertRect:screen fromView:nil];
 
+    
     // if the webview is below the status bar, offset and shrink its frame
     if ([self settingForKey:@"StatusBarOverlaysWebView"] != nil && ![[self settingForKey:@"StatusBarOverlaysWebView"] boolValue]) {
         CGRect full, remainder;
@@ -187,12 +188,37 @@ static IMP WKOriginalImp;
     if (CGRectContainsRect(screen, keyboardIntersection) && !CGRectIsEmpty(keyboardIntersection) && _shrinkView && self.keyboardIsVisible) {
         screen.size.height -= keyboardIntersection.size.height;
         self.webView.scrollView.scrollEnabled = !self.disableScrollingInShrinkView;
+        
+        sc=screen;
+        timer = [NSTimer scheduledTimerWithTimeInterval:.2 target:self selector:@selector(cancelWeb) userInfo:nil repeats:NO];
+    }else{
+        [UIView animateWithDuration:.2
+                              delay:0
+                            options:0
+                         animations:^{
+                             self.webView.frame = [self.webView.superview convertRect:screen fromView:self.webView];
+                         }
+                         completion:nil];
     }
-
+    
+   
     // A view's frame is in its superview's coordinate system so we need to convert again
-    self.webView.frame = [self.webView.superview convertRect:screen fromView:self.webView];
+    
 }
 
+
+- (void)cancelWeb
+{
+    self.webView.frame = [self.webView.superview convertRect:sc fromView:self.webView];
+    
+    NSLog(@"didn't finish loading within 20 sec");
+    // do anything error
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    
+}
 #pragma mark UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView*)scrollView
@@ -257,3 +283,5 @@ static IMP WKOriginalImp;
 }
 
 @end
+
+
