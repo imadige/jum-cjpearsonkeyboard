@@ -192,6 +192,7 @@ static IMP WKOriginalImp;
         sc=screen;
         timer = [NSTimer scheduledTimerWithTimeInterval:.2 target:self selector:@selector(cancelWeb) userInfo:nil repeats:NO];
     }else{
+        /*
         [UIView animateWithDuration:.2
                               delay:0
                             options:0
@@ -199,6 +200,9 @@ static IMP WKOriginalImp;
                              self.webView.frame = [self.webView.superview convertRect:screen fromView:self.webView];
                          }
                          completion:nil];
+        */
+                         
+        self.webView.frame = [self.webView.superview convertRect:screen fromView:self.webView];
     }
     
    
