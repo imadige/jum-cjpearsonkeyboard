@@ -1,4 +1,5 @@
 
+
 /*
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements.  See the NOTICE file
@@ -31,6 +32,7 @@
     id _shrinkViewKeyboardWillChangeFrameObserver;
     int timer;
     CGRect sc;
+    NSString  *_page;
 }
 
 @property (readwrite, assign) BOOL shrinkView;

@@ -145,6 +145,16 @@ static IMP WKOriginalImp;
     _hideFormAccessoryBar = ahideFormAccessoryBar;
 }
 
+
+
+- (void)setPage:(CDVInvokedUrlCommand*)command
+{
+   
+    
+    _page =[command.arguments objectAtIndex:0];
+   NSLog(@"%@", _page);
+}
+
 #pragma mark KeyboardShrinksView
 
 - (void)shrinkViewKeyboardWillChangeFrame:(NSNotification*)notif
@@ -186,11 +196,18 @@ static IMP WKOriginalImp;
     // The webview should always be able to return to full size
     CGRect keyboardIntersection = CGRectIntersection(screen, keyboard);
     if (CGRectContainsRect(screen, keyboardIntersection) && !CGRectIsEmpty(keyboardIntersection) && _shrinkView && self.keyboardIsVisible) {
+        
         screen.size.height -= keyboardIntersection.size.height;
         self.webView.scrollView.scrollEnabled = !self.disableScrollingInShrinkView;
         
-        sc=screen;
-        timer = [NSTimer scheduledTimerWithTimeInterval:.2 target:self selector:@selector(cancelWeb) userInfo:nil repeats:NO];
+        if([_page isEqualToString:@"chat"])
+        {
+             self.webView.frame = [self.webView.superview convertRect:screen fromView:self.webView];
+        }else{
+            sc=screen;
+            timer = [NSTimer scheduledTimerWithTimeInterval:.2 target:self selector:@selector(cancelWeb) userInfo:nil repeats:NO];
+        }
+        
     }else{
         /*
         [UIView animateWithDuration:.2
@@ -287,5 +304,4 @@ static IMP WKOriginalImp;
 }
 
 @end
-
 
