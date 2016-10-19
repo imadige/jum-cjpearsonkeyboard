@@ -152,8 +152,17 @@ static IMP WKOriginalImp;
    
     
     _page =[command.arguments objectAtIndex:0];
-   NSLog(@"%@", _page);
+  
 }
+
+- (void)AllowInlineMediaPlayback:(CDVInvokedUrlCommand*)command
+{
+   
+    
+    self.webView.allowsInlineMediaPlayback=true;
+  
+}
+
 
 #pragma mark KeyboardShrinksView
 
@@ -232,8 +241,7 @@ static IMP WKOriginalImp;
 {
     self.webView.frame = [self.webView.superview convertRect:sc fromView:self.webView];
     
-    NSLog(@"didn't finish loading within 20 sec");
-    // do anything error
+    
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView

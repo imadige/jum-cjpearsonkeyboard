@@ -42,6 +42,10 @@ Keyboard.setPage = function(page) {
     exec(null, null, "Keyboard2", "setPage", [page]);
 };
 
+Keyboard.AllowInlineMediaPlayback = function(page) {
+    exec(null, null, "Keyboard2", "AllowInlineMediaPlayback", [page]);
+};
+
 Keyboard.fireOnShow = function() {
     Keyboard.isVisible = true;
     cordova.fireWindowEvent('keyboardDidShow');
