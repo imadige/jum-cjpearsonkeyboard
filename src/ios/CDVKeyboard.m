@@ -160,6 +160,8 @@ static IMP WKOriginalImp;
    
     
     _page =[command.arguments objectAtIndex:0];
+
+    UIWebView * webView = [[UIWebView alloc] init];
     self.webView.allowsInlineMediaPlayback=YES;
 }
 
