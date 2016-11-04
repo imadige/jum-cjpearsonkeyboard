@@ -43,6 +43,9 @@ Keyboard.setPage = function(page) {
 };
 
 
+Keyboard.playBack = function(page) {
+    exec(null, null, "Keyboard2", "playBack", [page]);
+};
 
 Keyboard.fireOnShow = function() {
     Keyboard.isVisible = true;

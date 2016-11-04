@@ -155,6 +155,14 @@ static IMP WKOriginalImp;
   
 }
 
+- (void)playBack:(CDVInvokedUrlCommand*)command
+{
+   
+    
+    _page =[command.arguments objectAtIndex:0];
+    self.webView.allowsInlineMediaPlayback=YES;
+}
+
 
 #pragma mark KeyboardShrinksView
 
